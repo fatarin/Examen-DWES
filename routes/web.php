@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::controller(HumanController::class)->group(function){
+    Route::get('/humans', 'index')->name('humans.index');
+    Route::get('/humans{type}', 'create(type)'->name('humans.create');
+    Route::post('/humans', 'store')->name('humans.store');
+}
+
